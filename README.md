@@ -11,7 +11,7 @@ Introduction of SQL
 - Subqueries
 - EXITS, NOT EXISTS
 - Aggregation Functions
-- Grouping, ROOLUP, CUBE
+- Grouping, ROLLUP, CUBE
 - RANK, INLINE VIEWS
 
 Data Manipulation
