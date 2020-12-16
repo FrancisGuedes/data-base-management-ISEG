@@ -23,4 +23,4 @@ Data Definition
 - Index Creation
 - Data Types
 
-
+NOTE: Both part I and II of the exercises are made relying on the AdventureWorksLT SCHEMA
