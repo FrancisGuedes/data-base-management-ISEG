@@ -1,0 +1,69 @@
+Pós Graduação em Digital Technologies For Management
+        1ª Edição - Ano Letivo 2020/2021
+        UC de Database Management
+
+Projecto Final
+
+Imagine um website de avaliação de filmes, ondem os críticos inserem as suas classificações. O
+website ainda não contém muitos dados, mas já permite efetuar algumas consultas interessantes. O
+esquema é o seguinte:
+
+Filme ( fID, titulo, ano, realizador )
+Cada filme é identificado por um número fID, um título, ano de produção e realizador.
+
+Critico ( cID, nome )
+Cada crítico é identificado por um número cID e pelo seu nome.
+
+Classificacao ( cID, fID, estrelas, dataClassificacao )
+Cada classificação é caraterizada pelo nº do crítico, nº do filme, nº de estrelas atribuídas (1-5) e data
+da classificação.
+
+Perguntas:
+1. Listar os títulos de todos os filmes dirigidos por Steven Spielberg.
+
+2. Listar todos os anos em que foi produzido um filme que recebeu uma classificação de 4 ou 5, e
+ordene-os por ordem crescente.
+
+3. Listar os títulos de todos os filmes que não têm nenhuma classificação.
+
+4. Alguns críticos não inseriram a data correspondente à sua classificação. Listar os nomes de todos
+os críticos que têm classificações em que a correspondente data é NULL.
+
+5. Escrever uma query que apresenta as classificações no seguinte formato: nome do crítico, título
+do filme, nº de estrelas e data da classificação. Ordene o resultado por esta ordem: nome do
+crítico, título do filme, nº de estrelas.
+
+6. Em todos os casos em que o mesmo crítico classificou o mesmo filme duas vezes, sendo a 2ª
+classificação superior à 1ª, listar o nome do crítico e o título do filme.
+
+7. Para cada filme com pelo menos uma classificação, pesquisar a classificação máxima que lhe foi
+atribuída. Listar o título do filme e a classificação máxima, ordenando por título do filme.
+
+8. Listar os títulos dos filmes e as médias das classificações por ordem decrescente destas últimas.
+Listar por ordem alfabética os filmes com as mesmas médias.
+
+9. Listar os nomes de todos os críticos que contribuíram com 3 ou mais classificações.
+10. Adicione à base de dados o crítico Diogo Silva, com um cID=209.
+
+11. Para cada filme, listar o seu título e a diferença entre a classificação mais alta e mais baixa que
+lhe foram atribuídas. Ordenar por ordem descendente da diferença de classificações e depois
+pelo título do filme.
+
+12. Listar a diferença entre as médias das classificações dos filmes produzidos antes de 1980 e no
+ano de 1980 e seguintes. Deve ser calculada a média da classificação para cada filme e depois
+calculada a média das médias para os filmes anteriores a 1980 e os produzidos nos anos de 1980
+e seguintes.
+
+13. Para todos os realizadores de mais de um filme, listar o seu nome e os títulos dos filmes que
+realizaram, ordenados por nome do realizador, título do filme.
+
+14. Listar o(s) título(s) do(s)filme(s) com a maior média de classificações, bem como essa média.
+
+15. Para cada par filme, crítico (título do filme e nome do crítico) liste o nº de classificações (um
+filme pode ser avaliado mais do que uma vez por um crítico, em datas diferentes). Listar também
+o nº de classificações por filme e por crítico, bem como o nº total de classificações.
+
+16. Apresente o ranking dos filmes por ordem descendente de média de classificação.
+
+17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
+classificação.
