@@ -20,18 +20,34 @@ da classificação.
 
 Perguntas:
 1. Listar os títulos de todos os filmes dirigidos por Steven Spielberg.
+select * from filme
+where realizador = 'Steven Spielberg'
 
 2. Listar todos os anos em que foi produzido um filme que recebeu uma classificação de 4 ou 5, e
 ordene-os por ordem crescente.
+select distinct ano
+from filme f, classificacao c
+where f.fid = c.fid and estrelas between 4 and 5
+order by ano asc
 
 3. Listar os títulos de todos os filmes que não têm nenhuma classificação.
+select titulo
+from filme f, classificacao c
+where f.fid = c.fid and estrelas is null
 
 4. Alguns críticos não inseriram a data correspondente à sua classificação. Listar os nomes de todos
 os críticos que têm classificações em que a correspondente data é NULL.
+select distinct nome 
+from critico c, classificacao cl
+where c.cid = cl.cid and dataclassificacao is null
 
 5. Escrever uma query que apresenta as classificações no seguinte formato: nome do crítico, título
 do filme, nº de estrelas e data da classificação. Ordene o resultado por esta ordem: nome do
 crítico, título do filme, nº de estrelas.
+select distinct cr.nome nomedocritico, titulo titulodofilme, estrelas nºestrelas, dataclassificacao datadaclassificação
+from critico cr, classificacao cl, filme f
+where cr.cid = cl.cid and cl.fid = f.fid
+order by nomedocritico, titulodofilme, nºestrelas
 
 6. Em todos os casos em que o mesmo crítico classificou o mesmo filme duas vezes, sendo a 2ª
 classificação superior à 1ª, listar o nome do crítico e o título do filme.
