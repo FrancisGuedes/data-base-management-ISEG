@@ -1,7 +1,7 @@
 # data-base-management-ISEG
 Exercises of SQL on a Post-Graduation in Digital Technologies for Management giving by PhD Ana Lucas.
 
-The porpuse of the class Data Base Management on the Post Graduation is for the students being able to manipulate data bases with SQL.
+The porpuse of the class Data Base Management on the Post Graduation is for the students being able to manipulate data bases with SQL in Apex Oracle.
 
 Introduction of SQL
 - SELECT, FROM, JOINs
