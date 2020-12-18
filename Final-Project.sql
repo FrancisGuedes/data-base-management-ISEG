@@ -31,15 +31,17 @@ where f.fid = c.fid and estrelas between 4 and 5
 order by ano asc
 
 3. Listar os títulos de todos os filmes que não têm nenhuma classificação.
-select titulo
-from filme f, classificacao c
-where f.fid = c.fid and estrelas is null
+select distinct titulo
+from filme 
+where fid not in (
+    select fid from classificacao
+    )
 
 4. Alguns críticos não inseriram a data correspondente à sua classificação. Listar os nomes de todos
 os críticos que têm classificações em que a correspondente data é NULL.
 select distinct nome 
 from critico c, classificacao cl
-where c.cid = cl.cid and dataclassificacao is null
+where dataclassificacao is null
 
 5. Escrever uma query que apresenta as classificações no seguinte formato: nome do crítico, título
 do filme, nº de estrelas e data da classificação. Ordene o resultado por esta ordem: nome do
