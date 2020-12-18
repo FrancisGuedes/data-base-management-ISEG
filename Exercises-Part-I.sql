@@ -246,7 +246,7 @@ join Sales_Order_Header sh on c.customerid = sh.customerid
 group by cube (a.countryregion, a.stateprovince)
 order by a.countryregion, a.stateprovince
 
-Q21.
+Q19.
 /*
 The sales manager at Adventure Works has mandated a 10% price increase for all products
 in the Road Bikes category. Update the rows in the Product table for these products to
@@ -254,14 +254,14 @@ increase their price by 10%
 */
 
 update product
-set listprice = listprice * 1,1
+set listprice = listprice * 1.1
 where productcategoryid = (
     select productcategoryid
     from product_model
     where name = 'Road Bikes'
 )
 
-Q23.
+Q21.
 /*
 Delete the records from the Road Bikes category and its products. You must ensure that you
 delete the records from the tables in the correct order to avoid a foreign-key constraint
