@@ -109,7 +109,6 @@ is stored in the database.
 update customer
 set middlename=null
 where middlename='NULL'
-
 - first we execute de comand above before we could resolve the exercise 
 */
 
