@@ -53,6 +53,12 @@ order by nomedocritico, titulodofilme, nºestrelas
 
 6. Em todos os casos em que o mesmo crítico classificou o mesmo filme duas vezes, sendo a 2ª
 classificação superior à 1ª, listar o nome do crítico e o título do filme.
+select distinct cr.nome, f.titulo, cla.estrelas
+from critico cr
+join classificacao cl on cr.cid = cl.cid
+join classificacao cla on cl.cid = cla.cid
+join filme f on cl.fid = f.fid 
+where cl.dataclassificacao < cla.dataclassificacao and cl.estrelas < cla.estrelas 
 
 7. Para cada filme com pelo menos uma classificação, pesquisar a classificação máxima que lhe foi
 atribuída. Listar o título do filme e a classificação máxima, ordenando por título do filme.
