@@ -62,6 +62,11 @@ where cl.dataclassificacao < cla.dataclassificacao and cl.estrelas < cla.estrela
 
 7. Para cada filme com pelo menos uma classificação, pesquisar a classificação máxima que lhe foi
 atribuída. Listar o título do filme e a classificação máxima, ordenando por título do filme.
+select titulo, max(estrelas) as classificaçãomáxima
+from filme f
+join classificacao cla on f.fid = cla.fid
+group by titulo
+order by titulo
 
 8. Listar os títulos dos filmes e as médias das classificações por ordem decrescente destas últimas.
 Listar por ordem alfabética os filmes com as mesmas médias.
