@@ -211,3 +211,56 @@ from customer c, sales_order_header sh,
 where sh.totaldue = tmax.max and c.customerid = sh.customerid 
 
 Q15.
+/*
+Crie uma tabela CustomerWOrders com os atributos CustomerID, CompanyName dos clientes
+sem nenhuma encomenda associada
+*/
+         
+create table CustomerWOrders
+(
+    custumerid integer primary key,
+    companyname varchar2 (30),
+)
+
+Q19.
+/*
+Crie as seguintes tabelas:
+Cliente (idcliente, nome)
+Fatura (idfatura, idcliente, total)
+LinhaFatura (idfatura, idproduto, quantidade)
+Pretende-se que caso o cliente seja apagado, também o sejam as suas faturas e respetivas linhas.
+
+Insira duas linhas em cada uma das tabelas e depois apague um cliente com faturas e veja o que
+acontece.
+*/
+               
+create table Cliente
+(
+    idcliente integer primary key,
+    nome char (20)
+)
+
+insert into Cliente values (1, 'Antonio')
+insert into Cliente values (2, 'Joao')
+
+create table Fatura
+(
+    idfatura integer primary key,
+    idcliente references cliente(idcliente) on delete cascade,
+    nomefatura varchar2 (30)
+)
+
+insert into Fatura values (1, 1, 'lalala')
+insert into Fatura values (2, 2, 'lelele')
+
+create table LinhaFatura 
+(
+    idfatura references fatura(idfatura) on delete cascade,
+    idproduto integer primary key,
+    quantidade integer
+)
+
+insert into LinhaFatura values (1, 1, 5)
+insert into LinhaFatura values (2, 2, 10)
+
+delete from Cliente where nome = 'Joao'
