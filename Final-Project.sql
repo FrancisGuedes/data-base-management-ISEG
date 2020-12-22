@@ -85,6 +85,7 @@ group by nome
 having count (*) >= 3
 
 10. Adicione à base de dados o crítico Diogo Silva, com um cID=209.
+insert into critico values (209, 'Diogo Silva')
 
 11. Para cada filme, listar o seu título e a diferença entre a classificação mais alta e mais baixa que
 lhe foram atribuídas. Ordenar por ordem descendente da diferença de classificações e depois
