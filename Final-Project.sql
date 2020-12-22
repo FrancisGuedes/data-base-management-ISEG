@@ -90,6 +90,11 @@ insert into critico values (209, 'Diogo Silva')
 11. Para cada filme, listar o seu título e a diferença entre a classificação mais alta e mais baixa que
 lhe foram atribuídas. Ordenar por ordem descendente da diferença de classificações e depois
 pelo título do filme.
+select titulo, (max(estrelas)-min(estrelas)) as diferençaclassificações
+from filme f, classificacao cl
+where f.fid = cl.fid
+group by titulo
+order by diferençaclassificações desc, titulo
 
 12. Listar a diferença entre as médias das classificações dos filmes produzidos antes de 1980 e no
 ano de 1980 e seguintes. Deve ser calculada a média da classificação para cada filme e depois
