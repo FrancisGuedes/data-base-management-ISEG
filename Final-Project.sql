@@ -70,8 +70,16 @@ order by titulo
 
 8. Listar os títulos dos filmes e as médias das classificações por ordem decrescente destas últimas.
 Listar por ordem alfabética os filmes com as mesmas médias.
-
+select titulo, cast(avg(estrelas) as decimal(10,1)) as médiaclassificação
+from filme f
+join classificacao cl on f.fid = cl.fid
+group by titulo
+order by titulo, médiaclassificação desc
+-- coloquei a média com uma casa decimal
+                                             
 9. Listar os nomes de todos os críticos que contribuíram com 3 ou mais classificações.
+
+
 10. Adicione à base de dados o crítico Diogo Silva, com um cID=209.
 
 11. Para cada filme, listar o seu título e a diferença entre a classificação mais alta e mais baixa que
