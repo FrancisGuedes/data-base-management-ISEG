@@ -78,7 +78,11 @@ order by titulo, médiaclassificação desc
 -- coloquei a média com uma casa decimal
                                              
 9. Listar os nomes de todos os críticos que contribuíram com 3 ou mais classificações.
-
+select distinct nome
+from critico cr
+join classificacao cl on cr.cid = cl.cid
+group by nome
+having count (*) >= 3
 
 10. Adicione à base de dados o crítico Diogo Silva, com um cID=209.
 
