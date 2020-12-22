@@ -58,7 +58,7 @@ from critico cr
 join classificacao cl on cr.cid = cl.cid
 join classificacao cla on cl.cid = cla.cid
 join filme f on cl.fid = f.fid 
-where cl.dataclassificacao < cla.dataclassificacao and cl.estrelas < cla.estrelas 
+where cl.dataclassificacao < cla.dataclassificacao and cl.estrelas < cla.estrelas and cl.fid = cla.fid
 
 7. Para cada filme com pelo menos uma classificação, pesquisar a classificação máxima que lhe foi
 atribuída. Listar o título do filme e a classificação máxima, ordenando por título do filme.
