@@ -134,6 +134,11 @@ having avg(estrelas) = (
 15. Para cada par filme, crítico (título do filme e nome do crítico) liste o nº de classificações (um
 filme pode ser avaliado mais do que uma vez por um crítico, em datas diferentes). Listar também
 o nº de classificações por filme e por crítico, bem como o nº total de classificações.
+select f.titulo, cr.nome, count(estrelas) as nºclassificacoes
+from filme f, classificacao c, critico cr
+where f.fid=c.fid and c.cid=cr.cid
+group by cube (f.titulo, cr.nome)
+order by nºclassificacoes
 
 16. Apresente o ranking dos filmes por ordem descendente de média de classificação.
 
