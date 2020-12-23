@@ -120,6 +120,16 @@ WHERE f.realizador IN
 ORDER BY f.realizador, f.titulo
 
 14. Listar o(s) título(s) do(s)filme(s) com a maior média de classificações, bem como essa média.
+select titulo, avg(estrelas)
+from filme f
+join classificacao c
+on f.fid = c.fid
+group by titulo
+having avg(estrelas) = (
+    select max(avg(estrelas))
+    from classificacao c
+    group by c.fid
+)
 
 15. Para cada par filme, crítico (título do filme e nome do crítico) liste o nº de classificações (um
 filme pode ser avaliado mais do que uma vez por um crítico, em datas diferentes). Listar também
