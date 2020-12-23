@@ -109,6 +109,15 @@ join filme fl on f.realizador = fl.realizador
 group by f.titulo, f.realizador
 having count (f.titulo) > 1
 order by f.realizador, f.titulo
+---------------
+SELECT distinct f.realizador, f.titulo
+FROM filme f
+WHERE f.realizador IN
+	(SELECT f.realizador
+	 FROM filme f
+	 GROUP BY f.realizador
+	 HAVING count(titulo) >1)
+ORDER BY f.realizador, f.titulo
 
 14. Listar o(s) título(s) do(s)filme(s) com a maior média de classificações, bem como essa média.
 
