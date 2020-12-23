@@ -103,6 +103,12 @@ e seguintes.
 
 13. Para todos os realizadores de mais de um filme, listar o seu nome e os títulos dos filmes que
 realizaram, ordenados por nome do realizador, título do filme.
+select f.realizador, f.titulo
+from filme f
+join filme fl on f.realizador = fl.realizador 
+group by f.titulo, f.realizador
+having count (f.titulo) > 1
+order by f.realizador, f.titulo
 
 14. Listar o(s) título(s) do(s)filme(s) com a maior média de classificações, bem como essa média.
 
