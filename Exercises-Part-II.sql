@@ -222,6 +222,35 @@ create table CustomerWOrders
     companyname varchar2 (30),
 )
 
+Q16.
+/*Crie as seguintes tabelas
+a. PG (idPG, nome)
+b. EdicaoPG (idPG, edicao, dataInicio (YYYY-MM-DD), dataFim)
+Pretende-se que caso a PG seja anulada, também o sejam as suas edições
+Altere a tabela EdicaoPG adicionando um atributo MediaDaPG e uma constraint data
+Fim>dataInicio
+*/
+               
+a.
+create table PG
+(
+    idPG integer primary key,
+    nome varchar2 (30) not null
+)
+
+create table EdicaoPG
+(
+    idPG references PG(idPG) on delete cascade,
+    edicao varchar2(30) primary key,
+    dataInicio date,
+    dataFim date
+)
+-- não está completo               
+b.             
+alter table EdicaoPG add  MediaDaPG number (4,2);
+
+alter table EdicaoPG add constraint datas check (dataFim>dataInicio);     
+               
 Q19.
 /*
 Crie as seguintes tabelas:
