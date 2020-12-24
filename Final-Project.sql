@@ -141,6 +141,13 @@ group by cube (f.titulo, cr.nome)
 order by nºclassificacoes
 
 16. Apresente o ranking dos filmes por ordem descendente de média de classificação.
-
+select titulo, dense_rank () over (order by avg(estrelas) desc ) as ranking
+from filme f
+left join classificacao c
+on f.fid=c.fid
+group by titulo
+order by ranking desc
+-- usei o dense_rank pois não deixa gaps no ranking em que existam empates
+	       
 17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
 classificação.
