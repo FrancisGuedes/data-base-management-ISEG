@@ -100,6 +100,16 @@ order by diferençaclassificações desc, titulo
 ano de 1980 e seguintes. Deve ser calculada a média da classificação para cada filme e depois
 calculada a média das médias para os filmes anteriores a 1980 e os produzidos nos anos de 1980
 e seguintes.
+SELECT (
+     AVG(CASE WHEN ano < 1980 THEN avg END))
+     - (AVG(CASE WHEN ano >= 1980 THEN avg END)
+) diferençamédias
+FROM (
+    SELECT f.fid, f.ano, AVG(estrelas) avg
+    FROM filme f
+    JOIN classificacao c ON f.fid = c.fid
+    GROUP BY f.fid, f.ano
+) 
 
 13. Para todos os realizadores de mais de um filme, listar o seu nome e os títulos dos filmes que
 realizaram, ordenados por nome do realizador, título do filme.
@@ -151,3 +161,9 @@ order by ranking desc
 	       
 17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
 classificação.
+select realizador, título, dense_rank () over (order by avg(estrelas) desc ) as ranking
+from filme f
+left join classificacao c
+on f.fid=c.fid
+group by realizador, titulo
+order by ranking desc
