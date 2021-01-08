@@ -1,6 +1,6 @@
 Pós Graduação em Digital Technologies For Management
         1ª Edição - Ano Letivo 2020/2021
-        UC de Database Management
+           UC de Database Management
 
 Projecto Final
 
@@ -129,7 +129,9 @@ from (
     where ano >= 1980
     group by cl.fid
 ) MediaA1980
-
+-- fazer dois inline views, um para perceber a média da classificação antes de 1980 ( where ano < 1980 ) e outro para 1980 e depois ( where ano >= 1980 ) para
+-- no SELECT fazer a subtração entre um e o outro.
+	 
 13. Para todos os realizadores de mais de um filme, listar o seu nome e os títulos dos filmes que
 realizaram, ordenados por nome do realizador, título do filme.
 select f.realizador, f.titulo
@@ -186,3 +188,4 @@ left join classificacao c
 on f.fid=c.fid
 group by realizador, titulo
 order by ranking desc
+-- O que se pretende é: Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de classificação e não é o que faz.
