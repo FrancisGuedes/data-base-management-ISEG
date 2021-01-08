@@ -109,7 +109,26 @@ FROM (
     FROM filme f
     JOIN classificacao c ON f.fid = c.fid
     GROUP BY f.fid, f.ano
-) 
+)
+----------------------------------------
+select avg(Mantes)-avg(Mdepois) diferencamedias
+from (
+    select avg(estrelas)Mantes
+    from classificacao cl
+    join filme f
+    on cl.fid = f.fid
+    where ano < 1980
+    group by cl.fid
+    ) MediaB1980
+ ,
+ (
+    select avg(estrelas)MDepois 
+    from classificacao cl
+    join filme f
+    on cl.fid = f.fid
+    where ano >= 1980
+    group by cl.fid
+) MediaA1980
 
 13. Para todos os realizadores de mais de um filme, listar o seu nome e os títulos dos filmes que
 realizaram, ordenados por nome do realizador, título do filme.
@@ -151,13 +170,13 @@ group by cube (f.titulo, cr.nome)
 order by nºclassificacoes
 
 16. Apresente o ranking dos filmes por ordem descendente de média de classificação.
-select titulo, dense_rank () over (order by avg(estrelas) desc ) as ranking
+select titulo, rank () over (order by avg(estrelas) desc ) as ranking
 from filme f
 join classificacao c
 on f.fid=c.fid
 group by titulo
 order by ranking desc
--- usei o dense_rank pois não deixa gaps no ranking em que existam empates
+-- pode-se usar o dense_rank ao invés de rank para não deixar gaps no ranking em que existam empates.
 	       
 17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
 classificação.
