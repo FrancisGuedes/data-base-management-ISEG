@@ -217,10 +217,11 @@ sem nenhuma encomenda associada
 */
          
 create table CustomerWOrders
-(
-    custumerid integer primary key,
-    companyname varchar2 (30),
-)
+as select customerid, CompanyName
+from customer cst
+left join SALES_ORDER_HEADER sh
+on cst.customerid = sh.customerid
+where sh.salesorderid IS NULL
 
 Q16.
 /*Crie as seguintes tabelas
