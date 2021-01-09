@@ -182,7 +182,7 @@ order by ranking desc
 	       
 17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
 classificação.
-select realizador, título, dense_rank () over (order by avg(estrelas) desc ) as ranking
+select realizador, título, rank () over (order by avg(estrelas) desc ) as ranking
 from filme f
 left join classificacao c
 on f.fid=c.fid
