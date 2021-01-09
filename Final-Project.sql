@@ -188,4 +188,4 @@ left join classificacao c
 on f.fid=c.fid
 group by realizador, titulo
 order by ranking desc
--- O que se pretende é: Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de classificação e não é o que faz.
+-- Não finalizada
