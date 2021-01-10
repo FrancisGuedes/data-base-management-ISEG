@@ -206,8 +206,8 @@ ORDER BY SUM(LineTotal) DESC
 
 Q15.
 /*
-Modify the previous query to include sales totals for products that have a list price of more
-than $1000
+Modify the previous query to only include product groups with a total sales value greater
+than $20,000.
 */
 
 select p.name, sum(linetotal)
