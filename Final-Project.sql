@@ -182,10 +182,8 @@ order by ranking desc
 	       
 17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
 classificação.
-select realizador, titulo, rank () over (order by avg(estrelas) desc ) as ranking
-from filme f
-join classificacao c
-on f.fid=c.fid
+select realizador, titulo, avg(estrelas) ClassMedia,
+rank() over(partition by realizador order by avg(estrelas) desc) as ranking
+from filme natural join classificacao
 group by realizador, titulo
-order by ranking desc
--- Não finalizada
+
