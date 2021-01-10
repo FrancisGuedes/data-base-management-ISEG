@@ -261,6 +261,16 @@ where productcategoryid = (
     where name = 'Road Bikes'
 )
 
+Q20. 
+/*
+The new LED lights you inserted in the previous challenge are to replace all previous light
+products. Update the Product table to set the DiscontinuedDate to today’s date for all
+products in the Lights category (Product Category ID 37) other than the LED Lights product
+you inserted previously.
+*/
+
+update product set DiscontinuedDate = to_date('10.01.2021', 'dd.mm.yyyy') where productcategoryid = 37
+
 Q21.
 /*
 Delete the records from the Road Bikes category and its products. You must ensure that you
