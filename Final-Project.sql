@@ -39,9 +39,13 @@ where fid not in (
 
 4. Alguns críticos não inseriram a data correspondente à sua classificação. Listar os nomes de todos
 os críticos que têm classificações em que a correspondente data é NULL.
-select distinct nome 
+select nome 
 from critico c, classificacao cl
-where dataclassificacao is null
+where c.id in (
+	select cid 
+        from classificacao 
+	where dataclassificacao is null
+	)
 
 5. Escrever uma query que apresenta as classificações no seguinte formato: nome do crítico, título
 do filme, nº de estrelas e data da classificação. Ordene o resultado por esta ordem: nome do
@@ -129,7 +133,7 @@ from (
     where ano >= 1980
     group by cl.fid
 ) MediaA1980
--- fazer dois inline views, um para perceber a média da classificação antes de 1980 ( where ano < 1980 ) e outro para 1980 e depois ( where ano >= 1980 ) para
+-- fiz dois inline views, um para perceber a média da classificação antes de 1980 ( where ano < 1980 ) e outro para 1980 e depois ( where ano >= 1980 ) para
 -- no SELECT fazer a subtração entre um e o outro.
 	 
 13. Para todos os realizadores de mais de um filme, listar o seu nome e os títulos dos filmes que
@@ -169,7 +173,7 @@ select f.titulo, cr.nome, count(estrelas) as nºclassificacoes
 from filme f, classificacao c, critico cr
 where f.fid=c.fid and c.cid=cr.cid
 group by cube (f.titulo, cr.nome)
-order by nºclassificacoes
+order by f.titulo, cr.nome
 
 16. Apresente o ranking dos filmes por ordem descendente de média de classificação.
 select titulo, rank () over (order by avg(estrelas) desc ) as ranking
