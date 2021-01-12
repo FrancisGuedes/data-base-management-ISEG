@@ -31,11 +31,10 @@ where f.fid = c.fid and estrelas between 4 and 5
 order by ano asc
 
 3. Listar os títulos de todos os filmes que não têm nenhuma classificação.
-select distinct titulo
-from filme 
-where fid not in (
-    select fid from classificacao
-    )
+Select titulo
+from filme f left join classificacao c  
+on f.fid=c.fid
+where estrelas is null;
 
 4. Alguns críticos não inseriram a data correspondente à sua classificação. Listar os nomes de todos
 os críticos que têm classificações em que a correspondente data é NULL.
@@ -176,12 +175,10 @@ group by cube (f.titulo, cr.nome)
 order by f.titulo, cr.nome
 
 16. Apresente o ranking dos filmes por ordem descendente de média de classificação.
-select titulo, rank () over (order by avg(estrelas) desc ) as ranking
-from filme f
-join classificacao c
-on f.fid=c.fid
-group by titulo
-order by ranking desc
+Select titulo, rank() over (order by avg(estrelas) desc) as Ranking,
+cast(avg(estrelas) as decimal(10,1)) MediaClassif
+from filme natural join classificacao
+group by titulo;
 -- pode-se usar o dense_rank ao invés de rank para não deixar gaps no ranking em que existam empates.
 	       
 17. Para cada realizador, apresente o ranking dos seus filmes por ordem descendente de média de
